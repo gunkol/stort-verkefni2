@@ -3,3 +3,5 @@ extras/
 package-lock.json
 script-compiled.js.map
 script-compiled.js
+styles.css
+
