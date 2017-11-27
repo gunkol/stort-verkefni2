@@ -1,5 +1,13 @@
-class VideoPlayer {
 
+class VideoPlayer {
+  constructor() {
+    this.keyName = 'countdown';
+    this.container = document.querySelector('.countdown');
+    this.form = document.querySelector('form');
+    // til þess að submit hafi þennan klasa sem "this" verðum við
+    // að nota bind hér (og í öðrum föllum sem við bindum!)
+    this.form.addEventListener('submit', this.submit.bind(this));
+  }
 }
 
 class VideoPage {
