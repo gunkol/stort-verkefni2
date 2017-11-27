@@ -1,5 +1,5 @@
 
-class VideoPlayer {
+class VideoPage {
   constructor() {
     this.container = document.querySelector('.videos');
     // til þess að submit hafi þennan klasa sem "this" verðum við
@@ -14,15 +14,16 @@ class VideoPlayer {
     request.onload = () => {
       this.data = JSON.parse(request.response);
       this.createCategories();
+      // console.log(data.videos[0].id);
+      // console.log(data.categories);
     }
     request.send();
   }
 
   createCategories() {
-    console.log(this.data.categories);
-
-    // console.log(data.videos[0].id);
-    // console.log(data.categories);
+    console.log(this.data);
+    //const categories = data.categories;
+    //console.log(categories);
   }
 
   // key: 'onLoad',
@@ -35,7 +36,7 @@ class VideoPlayer {
 
 }
 
-class VideoPage {
+class VideoPlayer {
 
 }
 
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   console.log(URL);
-  if (URL.indexOf('localhost:3000/') !== -1) {
+  if (URL.indexOf('localhost:3000/') == -1) {
     const videoplayer = new VideoPlayer();
     videoplayer.load();
   } else {
