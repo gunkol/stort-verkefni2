@@ -1,6 +1,9 @@
-var strengur ='/videos.json';
-  var request = new XMLHttpRequest();
-  request.open('GET', strengur, true);
+class VideoPlayer {
 
-  //var strengur ='/videos.json';
-  console.log(strengur);
+}
+
+class VideoPage 
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+  });
