@@ -22,11 +22,6 @@ html {
 .hidden {
   display: none; }
 
-section {
-padding-top: 30px;
-padding-bottom: 30px;
-}
-
 main {
   /* stylelint-disable-line */
   display: flex;
@@ -141,7 +136,7 @@ main {
 
 .text {
   color: #fff;
-  
+
   &__myndbandsTitill {
     width: auto;
     max-width: 83%;
