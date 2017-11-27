@@ -8,24 +8,21 @@ class VideoPlayer {
 
   load() {
     console.log('load fallið virkar');
-    let data;
     const request = new XMLHttpRequest();
     request.open('GET', './videos.json', true);
 
-    request.onload = function () {
-      data = JSON.parse(request.response);
-      console.log(data);
-      // console.log(data.videos[0].id);
-      // console.log(data.categories);
+    request.onload = () => {
+      this.data = JSON.parse(request.response);
+      this.createCategories();
     }
     request.send();
-    this.createCategories(data);
   }
 
-  createCategories(data) {
-    console.log(data);
-    //this.data = data;
-    console.log('hæ');
+  createCategories() {
+    console.log(this.data.categories);
+
+    // console.log(data.videos[0].id);
+    // console.log(data.categories);
   }
 
   // key: 'onLoad',
