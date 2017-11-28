@@ -343,7 +343,15 @@ class VideoPlayer {
   }
 
   resetVideo() {
-
+    const vid = document.querySelector('.video');
+    vid.currentTime = 0;
+    const overlay = document.querySelector('.overlay');
+    const overlayButton = document.querySelector('.overlayButton');
+    const pauseButton = document.querySelector('.pauseButton');
+    pauseButton.classList.remove('pauseButton');
+    pauseButton.classList.add('playButton');
+    overlayButton.classList.add('playButton');
+    overlay.classList.remove('overlay__hidden');
   }
 
   error() {
@@ -356,8 +364,7 @@ class VideoPlayer {
 
 document.addEventListener('DOMContentLoaded', () => {
   const URL = document.URL.toString();
-  console.log(URL);
-  if (URL.indexOf('player') !== -1) {
+  if (URL.indexOf('player') > -1) {
     const videoplayer = new VideoPlayer();
     videoplayer.load();
   } else {
