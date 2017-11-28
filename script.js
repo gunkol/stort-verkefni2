@@ -254,14 +254,33 @@ class VideoPlayer {
 
       const buttons = ['backButton', 'playButton', 'muteButton', 'fullscrButton', 'nextButton'];
 
-      buttons.forEach((i) => {
-        this.createButton(i);
-      });
+      buttons.forEach(i => this.createButton(i));
     }
   }
 
   createButton(buttonTitle) {
-
+    const button = document.createElement('button');
+    button.classList.add('button');
+    button.classList.add(buttonTitle);
+    this.buttons.appendChild(button);
+    switch (buttonTitle) {
+      case 'playButton':
+        button.addEventListener('click', this.playButton.bind(this));
+        break;
+      case 'muteButton':
+        button.addEventListener('click', this.muteButton.bind(this));
+        break;
+      case 'nextButton':
+        button.addEventListener('click', this.nextButton.bind(this));
+        break;
+      case 'backButton':
+        button.addEventListener('click', this.backButton.bind(this));
+        break;
+      case 'fullscrButton':
+        button.addEventListener('click', this.fullscrButton.bind(this));
+        break;
+      default:
+    }
   }
 
   playButton() {
