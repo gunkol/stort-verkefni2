@@ -1,7 +1,7 @@
 
 class VideoPage {
   constructor() {
-    this.container = document.querySelector('.videos');
+    const content = document.querySelector('.content');
     // til þess að submit hafi þennan klasa sem "this" verðum við
     // að nota bind hér (og í öðrum föllum sem við bindum!)
   }
@@ -16,14 +16,15 @@ class VideoPage {
       this.createCategories();
       // console.log(data.videos[0].id);
       // console.log(data.categories);
-    }
+    };
     request.send();
   }
 
   createCategories() {
+    debugger;
     console.log(this);
 
-    this.clear();
+    // this.clear();
 
     const categories = this.data.categories;
 
@@ -34,9 +35,12 @@ class VideoPage {
         category.classList.add('category');
         const headingTitle = document.createElement('h1');
         headingTitle.classList.add('text', 'text__categoryTitle');
-        console.log(headingTitle);
         headingTitle.appendChild(document.createTextNode(catTitle));
+        console.log(headingTitle);
         category.appendChild(headingTitle);
+        console.log(category);
+        console.log(this.content);
+        // this.content.appendChild(category);
 
 
         var cardlist = document.createElement('div');
