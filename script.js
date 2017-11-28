@@ -1,123 +1,111 @@
-
 class VideoPage {
   constructor() {
-    const content = document.querySelector('.content');
-    // til þess að submit hafi þennan klasa sem "this" verðum við
-    // að nota bind hér (og í öðrum föllum sem við bindum!)
+    this.content = document.querySelector('.content');
   }
 
   load() {
-    console.log('load fallið virkar');
+    this.onLoad();
+
     const request = new XMLHttpRequest();
     request.open('GET', './videos.json', true);
 
     request.onload = () => {
       this.data = JSON.parse(request.response);
-      this.createCategories();
-      // console.log(data.videos[0].id);
-      // console.log(data.categories);
+      this.createCategories(this.data);
     };
     request.send();
   }
 
-  createCategories() {
-    debugger;
-    console.log(this);
+  createCategories(data) {
+    this.clear();
 
-    // this.clear();
-
-    const categories = this.data.categories;
+    const { categories } = data;
 
     categories.forEach(cat => {
 
         const catTitle = cat.title;
+
         const category = document.createElement('div');
         category.classList.add('category');
+
         const headingTitle = document.createElement('h1');
         headingTitle.classList.add('text', 'text__categoryTitle');
         headingTitle.appendChild(document.createTextNode(catTitle));
-        console.log(headingTitle);
         category.appendChild(headingTitle);
-        console.log(category);
-        console.log(this.content);
-        // this.content.appendChild(category);
 
-
-        var cardlist = document.createElement('div');
+        const cardlist = document.createElement('div');
         cardlist.classList.add('cardlist');
         category.appendChild(cardlist);
 
-        var currCategory = cat.videos;
+        const currCategory = cat.videos;
+
         currCategory.forEach(currId => {
-          //var currVideo = this.createVideos(this.data,currId - 1);
-          var videoId = currId - 1;
-          var currVideo = this.createVideos(this.data, videoId);
+          var currVideo = this.createVideos(this.data,currId - 1);
+          //var videoId = currId - 1;
+          //var currVideo = this.createVideos(this.data, videoId);
           cardlist.appendChild(currVideo);
         });
 
-        var cardlistLine = document.createElement('span');
-
+        const cardlistLine = document.createElement('span');
         cardlistLine.classList.add('cardlist__line');
-
         category.appendChild(cardlistLine);
 
-        //this.catagories.appendChild(category);
-
+        this.content.appendChild(category);
     });
 
   }
   createVideos(data, videoId) {
-    var videoName = data.videos[videoId].title;
-    var videoDuration = data.videos[videoId].duration;
-    var videoAge = data.videos[videoId].created;
-    var videoImgUrl = data.videos[videoId].poster;
-    var videoCard = document.createElement('a');
+    const videoName = data.videos[videoId].title;
+    const videoDuration = data.videos[videoId].duration;
+    const videoAge = data.videos[videoId].created;
+    const videoImgUrl = data.videos[videoId].poster;
+    const videoCard = document.createElement('a');
     videoCard.classList.add('card');
-    var videoLinkUrl = 'player.html?id='.concat(videoId + 1);
+    const videoLinkUrl = 'player.html?id='.concat(videoId + 1);
     videoCard.setAttribute('href', videoLinkUrl);
 
-    var videoPoster = document.createElement('div');
+    const videoPoster = document.createElement('div');
     videoPoster.classList.add('card__videoPoster');
     videoCard.appendChild(videoPoster);
 
-    var videoImg = document.createElement('img');
+    const videoImg = document.createElement('img');
     videoImg.src = videoImgUrl;
     videoImg.classList.add('card__videoImg');
     videoImg.alt = videoName;
     videoPoster.appendChild(videoImg);
 
-    var lengthFlex = document.createElement('div');
+    const lengthFlex = document.createElement('div');
     lengthFlex.classList.add('card__lengthFlex');
     videoPoster.appendChild(lengthFlex);
 
-    var videoLength = document.createElement('div');
+    const videoLength = document.createElement('div');
     videoLength.classList.add('card__videoLength');
-    var lengthNode = document.createTextNode(this.parseLength(videoDuration));
+    const lengthNode = document.createTextNode(this.parseLength(videoDuration));
     videoLength.appendChild(lengthNode);
     lengthFlex.appendChild(videoLength);
 
-    var videoDescription = document.createElement('div');
+    const videoDescription = document.createElement('div');
     videoDescription.classList.add('card__videoDescription');
     videoCard.appendChild(videoDescription);
 
-    var videoTitle = document.createElement('div');
+    const videoTitle = document.createElement('div');
     videoTitle.classList.add('text', 'text__videoTitle');
     videoTitle.appendChild(document.createTextNode(videoName));
     videoDescription.appendChild(videoTitle);
 
-    var videoDate = document.createElement('p');
+    const videoDate = document.createElement('p');
     videoDate.classList.add('text', 'text__videoDate');
-    var dateNode = document.createTextNode(this.parseDate(videoAge));
+    const dateNode = document.createTextNode(this.parseDate(videoAge));
     videoDate.appendChild(dateNode);
     videoDescription.appendChild(videoDate);
 
-    return videoCard;
+    return videoCard
   }
 
   parseLength(duration) {
-    var minutes = Math.floor(duration / 60);
-    var seconds = duration - minutes * 60;
-    var time = '';
+    const minutes = Math.floor(duration / 60);
+    const seconds = duration - (minutes * 60);
+    let time = '';
     if (minutes < 10) {
       time = '0'.concat(minutes.toString(), ':');
     } else {
@@ -132,15 +120,15 @@ class VideoPage {
 
 
   parseDate(videoAge) {
-    var timeSince = Math.floor((new Date() - videoAge) / 1000);
-    var minutes = Math.floor(timeSince / 60);
-    var hours = Math.floor(minutes / 60);
-    var days = Math.floor(hours / 24);
-    var weeks = Math.floor(days / 7);
-    var months = Math.floor(days / 30);
-    var years = Math.floor(days / 365);
+    const timeSince = Math.floor((new Date() - videoAge) / 1000);
+    const minutes = Math.floor(timeSince / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const weeks = Math.floor(days / 7);
+    const months = Math.floor(days / 30);
+    const years = Math.floor(days / 365);
 
-    var fyrir = 'Fyrir ';
+    const fyrir = 'Fyrir ';
 
     if (years > 0) {
       if (years === 1) {
@@ -175,15 +163,15 @@ class VideoPage {
   }
 
   onLoad() {
-    var loading = document.createElement('h2');
+    const loading = document.createElement('h2');
     loading.classList.add('text');
     loading.appendChild(document.createTextNode('Hleð upplýsingum...'));
-    this.categories.appendChild(loading);
+    this.content.appendChild(loading);
   }
 
   clear() {
-    while (this.categories.hasChildNodes()) {
-      this.categories.removeChild(this.categories.firstChild);
+    while (this.content.hasChildNodes()) {
+      this.content.removeChild(this.content.firstChild);
     }
   }
 
@@ -251,7 +239,7 @@ class VideoPlayer {
 document.addEventListener('DOMContentLoaded', () => {
   const URL = document.URL.toString();
   console.log(URL);
-  if (URL.indexOf('localhost:3000/') !== -1) {
+  if (URL.indexOf('localhost:3000/') == -1) {
     const videoplayer = new VideoPlayer();
     videoplayer.load();
   } else {
