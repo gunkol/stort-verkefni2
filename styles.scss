@@ -12,7 +12,7 @@ html {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  background-color: grey; }
+  background-color: #434343; }
 
 .foo {
   width: 400px;
@@ -22,17 +22,20 @@ html {
 .hidden {
   display: none; }
 
-main {
-  /* stylelint-disable-line */
+body {
   display: flex;
   max-width: 1000px;
-  padding: 20px;
+  padding: 20px 0;
   margin: 0 auto;
   flex-direction: column;
+  @media (max-width: 999px){
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
-img {
-width: 100%;
+.category {
+  margin-top: 40px;
 }
 
 .player {
@@ -40,23 +43,23 @@ width: 100%;
   margin: 0 auto;
   text-align: center;
   flex-direction: column;
-  justify-content: center; }
-
-.villuMynd {
-  width: 100%; }
+  justify-content: center;
+}
 
 .videoContainer {
   display: flex;
   width: 100%;
   max-width: 1000px;
-  max-height: 100%; }
+  max-height: 100%;
+}
 
 .video {
   z-index: 1;
   display: flex;
   width: 100%;
   height: 100%;
-  max-height: 800px; }
+  max-height: 800px;
+}
 
 .overlay {
   z-index: 99;
@@ -67,7 +70,6 @@ width: 100%;
   flex-direction: column;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.2);
-
   &__hidden {
     z-index: 0; }
   }
@@ -75,13 +77,15 @@ width: 100%;
 .overlayButton {
   width: 48px;
   height: 48px;
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
 .buttons {
   display: flex;
   margin: 20px;
   flex-direction: row;
-  justify-content: center; }
+  justify-content: center;
+}
 
 @import "scss/heading";
 @import "scss/text";
