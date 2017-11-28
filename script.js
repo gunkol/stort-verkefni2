@@ -29,7 +29,7 @@ class VideoPage {
         category.classList.add('category');
 
         const headingTitle = document.createElement('h1');
-        headingTitle.classList.add('text', 'categoryTitle');
+        headingTitle.classList.add('text', 'text_categoryTitle');
         headingTitle.appendChild(document.createTextNode(catTitle));
         category.appendChild(headingTitle);
 
@@ -101,13 +101,13 @@ class VideoPage {
   }
 
   parseLength(duration) {
-    const minutes = Math.floor(duration / 60);
-    const seconds = duration - (minutes * 60);
+    const min = Math.floor(duration / 60);
+    const seconds = duration - (min * 60);
     let time = '';
-    if (minutes < 10) {
-      time = '0'.concat(minutes.toString(), ':');
+    if (min < 10) {
+      time = '0'.concat(min.toString(), ':');
     } else {
-      time = minutes.toString().concat(':');
+      time = min.toString().concat(':');
     }
 
     if (seconds < 10) {
@@ -119,9 +119,9 @@ class VideoPage {
 
   parseDate(videoAge) {
     const timeSince = Math.floor((new Date() - videoAge) / 1000);
-    const minutes = Math.floor(timeSince / 60);
-    const hours = Math.floor(minutes / 60);
-    const days = Math.floor(hours / 24);
+    const min = Math.floor(timeSince / 60);
+    const klst = Math.floor(min / 60);
+    const days = Math.floor(klst / 24);
     const weeks = Math.floor(days / 7);
     const months = Math.floor(days / 30);
     const years = Math.floor(days / 365);
@@ -148,16 +148,16 @@ class VideoPage {
         return fyrir.concat(days.toString(), ' degi síðan');
       }
       return fyrir.concat(days.toString(), ' dögum síðan');
-    } else if (hours > 0) {
-      if (hours === 1) {
-        return fyrir.concat(hours.toString(), ' klukustund síðan');
+    } else if (klst > 0) {
+      if (klst === 1) {
+        return fyrir.concat(klst.toString(), ' klukustund síðan');
       }
-      return fyrir.concat(hours.toString(), ' klukkustundum síðan');
+      return fyrir.concat(klst.toString(), ' klukkustundum síðan');
     }
-    if (minutes === 1) {
-      return fyrir.concat(minutes.toString(), ' mínútu síðan');
+    if (min === 1) {
+      return fyrir.concat(min.toString(), ' mínútu síðan');
     }
-    return fyrir.concat(minutes.toString(), ' mínútum síðan');
+    return fyrir.concat(min.toString(), ' mínútum síðan');
   }
 
   onLoad() {
