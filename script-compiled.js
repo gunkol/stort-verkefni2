@@ -314,7 +314,7 @@ var VideoPlayer = function () {
         button.classList.remove('pauseButton');
         button.classList.add('playButton');
         overlay.classList.remove('overlay__hidden');
-        overlayButton.add('playButton');
+        overlayButton.classList.add('playButton');
       } else {
         var _button = document.querySelector('button.playButton');
         vid.play();

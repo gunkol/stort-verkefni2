@@ -278,7 +278,7 @@ class VideoPlayer {
       button.classList.remove('pauseButton');
       button.classList.add('playButton');
       overlay.classList.remove('overlay__hidden');
-      overlayButton.add('playButton');
+      overlayButton.classList.add('playButton');
     } else {
       const button = document.querySelector('button.playButton');
       vid.play();
