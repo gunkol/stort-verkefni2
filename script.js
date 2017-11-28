@@ -21,37 +21,36 @@ class VideoPage {
 
     const { categories } = data;
 
-    categories.forEach(cat => {
+    categories.forEach((cat) => {
+      const catTitle = cat.title;
 
-        const catTitle = cat.title;
+      const category = document.createElement('div');
+      category.classList.add('category');
 
-        const category = document.createElement('div');
-        category.classList.add('category');
+      const headingTitle = document.createElement('h1');
+      headingTitle.classList.add('text', 'text_categoryTitle');
+      headingTitle.appendChild(document.createTextNode(catTitle));
+      category.appendChild(headingTitle);
 
-        const headingTitle = document.createElement('h1');
-        headingTitle.classList.add('text', 'text_categoryTitle');
-        headingTitle.appendChild(document.createTextNode(catTitle));
-        category.appendChild(headingTitle);
+      const cardlist = document.createElement('div');
+      cardlist.classList.add('cardlist');
+      category.appendChild(cardlist);
 
-        const cardlist = document.createElement('div');
-        cardlist.classList.add('cardlist');
-        category.appendChild(cardlist);
+      const currentCat = cat.videos;
 
-        const currentCat = cat.videos;
+      currentCat.forEach((currId) => {
+        const currVideo = this.createVideos(this.data, currId - 1);
+        cardlist.appendChild(currVideo);
+      });
 
-        currentCat.forEach(currId => {
-          const currVideo = this.createVideos(this.data,currId - 1);
-          cardlist.appendChild(currVideo);
-        });
+      const cardlistLine = document.createElement('span');
+      cardlistLine.classList.add('cardlist__line');
+      category.appendChild(cardlistLine);
 
-        const cardlistLine = document.createElement('span');
-        cardlistLine.classList.add('cardlist__line');
-        category.appendChild(cardlistLine);
-
-        this.content.appendChild(category);
+      this.content.appendChild(category);
     });
-
   }
+
   createVideos(data, videoId) {
     const videoName = data.videos[videoId].title;
     const videoDuration = data.videos[videoId].duration;
@@ -87,7 +86,7 @@ class VideoPage {
     videoCard.appendChild(videoDescription);
 
     const videoTitle = document.createElement('div');
-    videoTitle.classList.add('text', 'text__videoTitle');
+    videoTitle.classList.add('text', 'text__myndbandsTitill');
     videoTitle.appendChild(document.createTextNode(videoName));
     videoDescription.appendChild(videoTitle);
 
@@ -97,7 +96,7 @@ class VideoPage {
     videoDate.appendChild(dateNode);
     videoDescription.appendChild(videoDate);
 
-    return videoCard
+    return videoCard;
   }
 
   parseLength(duration) {
