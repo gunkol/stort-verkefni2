@@ -4,39 +4,39 @@
   height: 48px;
   margin: 10px;
   border: transparent;
+}
 
-  &__backButton {
+  .backButton {
   display: inline-block;
   background: url("./img/back.svg") no-repeat top left;
-  background-size: cover; }
+  background-size: contain; }
 
-  &__playButton {
+  .playButton {
   display: inline-block;
   background: url("./img/play.svg") no-repeat top left;
   background-size: contain; }
 
-  &__pauseButton {
+  .pauseButton {
   display: inline-block;
   background: url("./img/pause.svg") no-repeat top left;
   background-size: contain; }
 
-  &__muteButton {
+  .muteButton {
   display: inline-block;
   background: url("./img/mute.svg") no-repeat top left;
   background-size: contain; }
 
-  &__unmuteButton {
+  .unmuteButton {
   display: inline-block;
   background: url("./img/unmute.svg") no-repeat top left;
   background-size: contain; }
 
-  &__fullscrButton {
+  .fullscrButton {
   display: inline-block;
   background: url("./img/fullscreen.svg") no-repeat top left;
   background-size: contain; }
 
-  &__nextButton {
+  .nextButton {
   display: inline-block;
   background: url("./img/next.svg") no-repeat top left;
   background-size: contain; }
-}
