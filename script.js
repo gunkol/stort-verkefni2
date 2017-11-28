@@ -284,7 +284,28 @@ class VideoPlayer {
   }
 
   playButton() {
-
+    const vid = document.querySelector('.video');
+    const overlay = document.querySelector('.overlay');
+    const overlayButton = document.querySelector('.overlayButton');
+    if (!vid.paused) {
+      const button = document.querySelector('.pauseButton');
+      vid.pause();
+      if (button.classList.contains('pauseButton')) {
+        button.classList.remove('pauseButton');
+        button.classList.add('playButton');
+        overlay.classList.remove('overlay__hidden');
+        overlaybutton.add('playButton');
+      }
+    } else {
+      const button = document.querySelector('button.playButton');
+      vid.play();
+      if (button.classList.contains('playButton')) {
+        button.classList.remove('playButton');
+        button.classList.add('pauseButton');
+        overlayButton.classList.remove('playButton');
+        overlay.classList.add('overlay__hidden');
+      }
+    }
   }
 
   backButton() {
