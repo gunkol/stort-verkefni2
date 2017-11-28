@@ -3,34 +3,43 @@
   width: 100%;
   min-width: auto;
   max-width: auto;
-  text-decoration: none;
   color: #f0f;
+  text-decoration: none;
   @media (min-width: 999px) {
-      min-width: 470px;
-      max-width: 470px;
-    }
+    min-width: 470px;
+    max-width: 470px;
+  }
+
   &__videoPoster {
-    width: 100%; }
+    width: 100%;
+  }
+
   &__videoImg {
     width: auto;
     max-width: 100%;
     height: auto;
-    max-height: 100%; }
+    max-height: 100%;
+  }
+
   &__lengthFlex {
     position: relative;
     display: flex;
     margin-top: -50px;
     margin-right: 10px;
     margin-bottom: 20px;
-    flex-direction: row-reverse; }
+    flex-direction: row-reverse;
+  }
+
   &__videoLength {
     display: inline-block;
     width: auto;
     max-width: 100%;
     padding: 5px;
     color: #fff;
-    background: rgba(25, 25, 25, 0.5); }
+    background: rgba(25, 25, 25, 0.5);
+  }
+
   &__videoDescription {
     max-width: 100%;
-}
+  }
 }

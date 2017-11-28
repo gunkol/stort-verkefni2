@@ -6,37 +6,44 @@
   border: transparent;
 }
 
-  .backButton {
+.backButton {
   display: inline-block;
   background: url("./img/back.svg") no-repeat top left;
-  background-size: contain; }
+  background-size: contain;
+}
 
-  .playButton {
+.playButton {
   display: inline-block;
   background: url("./img/play.svg") no-repeat top left;
-  background-size: contain; }
+  background-size: contain;
+}
 
-  .pauseButton {
+.pauseButton {
   display: inline-block;
   background: url("./img/pause.svg") no-repeat top left;
-  background-size: contain; }
+  background-size: contain;
+}
 
-  .muteButton {
+.muteButton {
   display: inline-block;
   background: url("./img/mute.svg") no-repeat top left;
-  background-size: contain; }
+  background-size: contain;
+}
 
-  .unmuteButton {
+.unmuteButton {
   display: inline-block;
   background: url("./img/unmute.svg") no-repeat top left;
-  background-size: contain; }
+  background-size: contain;
+}
 
-  .fullscrButton {
+.fullscrButton {
   display: inline-block;
   background: url("./img/fullscreen.svg") no-repeat top left;
-  background-size: contain; }
+  background-size: contain;
+}
 
-  .nextButton {
+.nextButton {
   display: inline-block;
   background: url("./img/next.svg") no-repeat top left;
-  background-size: contain; }
+  background-size: contain;
+}

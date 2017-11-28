@@ -1,17 +1,18 @@
 .cardlist {
   display: flex;
   max-width: 1000px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   margin: 0;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-top: 30px;
-  padding-bottom: 30px;
 
   &__line {
     display: block;
     max-width: 80%;
     padding-top: 30px;
     margin: auto;
-    border-bottom: 1px solid #eee; }
+    border-bottom: 1px solid #eee;
   }
+}

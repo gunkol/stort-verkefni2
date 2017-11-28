@@ -171,7 +171,6 @@ class VideoPage {
       this.content.removeChild(this.content.firstChild);
     }
   }
-
 }
 
 class VideoPlayer {
