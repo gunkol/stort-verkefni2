@@ -294,7 +294,7 @@ class VideoPlayer {
         button.classList.remove('pauseButton');
         button.classList.add('playButton');
         overlay.classList.remove('overlay__hidden');
-        overlaybutton.add('playButton');
+        overlayButton.add('playButton');
       }
     } else {
       const button = document.querySelector('button.playButton');
@@ -309,11 +309,13 @@ class VideoPlayer {
   }
 
   backButton() {
-
+    const vid = document.querySelector('.video');
+    vid.currentTime -= 3;
   }
 
   nextButton() {
-
+    const vid = document.querySelector('.video');
+    vid.currentTime += 3;
   }
 
   fullscrButton() {
