@@ -29,7 +29,7 @@ class VideoPage {
         category.classList.add('category');
 
         const headingTitle = document.createElement('h1');
-        headingTitle.classList.add('text', 'text__categoryTitle');
+        headingTitle.classList.add('text', 'categoryTitle');
         headingTitle.appendChild(document.createTextNode(catTitle));
         category.appendChild(headingTitle);
 
@@ -37,12 +37,10 @@ class VideoPage {
         cardlist.classList.add('cardlist');
         category.appendChild(cardlist);
 
-        const currCategory = cat.videos;
+        const currentCat = cat.videos;
 
-        currCategory.forEach(currId => {
-          var currVideo = this.createVideos(this.data,currId - 1);
-          //var videoId = currId - 1;
-          //var currVideo = this.createVideos(this.data, videoId);
+        currentCat.forEach(currId => {
+          const currVideo = this.createVideos(this.data,currId - 1);
           cardlist.appendChild(currVideo);
         });
 
