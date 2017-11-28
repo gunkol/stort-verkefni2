@@ -3,11 +3,13 @@
   width: 100%;
   min-width: auto;
   max-width: auto;
+  padding-bottom: 40px;
   color: #f0f;
   text-decoration: none;
   @media (min-width: 999px) {
     min-width: 470px;
     max-width: 470px;
+    padding-bottom: 20px;
   }
 
   &__videoPoster {
