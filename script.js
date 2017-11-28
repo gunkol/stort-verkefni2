@@ -191,8 +191,7 @@ class VideoPage {
 
 class VideoPlayer {
   constructor() {
-    const player = document.querySelector('.player');
-    const content = document.querySelector('.content');
+    this.player = document.querySelector('.player');
   }
 
   load() {
@@ -201,42 +200,47 @@ class VideoPlayer {
 
     request.onload = () => {
       this.data = JSON.parse(request.response);
-      this.createPlayer();
+      this.createPlayer(this.data);
     };
     request.send();
   }
 
   createPlayer() {
-    // const videoId = window.location.search;
-    const videoId = 'notendur.hi.is/guk43/vefforritun/stort-verkefni2/player.html?id=2';
+    const videoId = window.location.search;
     const id = videoId[videoId.length - 1];
-    // this.player = document.querySelector('.player');
-    this.content = document.querySelector('.content');
+    this.player = document.querySelector('.player');
 
     if (!this.data.videos[id]) {
       this.error();
     } else {
-      // debugger;
       const titleEl = document.querySelector('title');
       titleEl.appendChild(document.createTextNode(this.data.videos[id - 1].title));
 
       const title = document.createElement('h1');
       title.classList.add('text', 'text__spilaraTitill');
       title.appendChild(document.createTextNode(this.data.videos[id - 1].title));
-      // this.player.appendChild(title);
-      this.content.appendChild(title);
+      this.player.appendChild(title);
 
-      const videoBox = document.createElement('div'); // videoContainer
-      videoBox.classList.add('videoBox');
-      // this.player.appendChild(videoBox);
-      this.content.appendChild(videoBox);
+      const videoContainer = document.createElement('div');
+      videoContainer.classList.add('videoContainer');
+      this.player.appendChild(videoContainer);
 
       const src = this.data.videos[id - 1].video;
       const video = document.createElement('video');
       video.classList.add('video');
       video.src = src;
-      videoBox.appendChild(video);
-      this.player.appendChild(videoBox);
+      videoContainer.appendChild(video);
+      this.player.appendChild(videoContainer);
+
+      const overlay = document.createElement('div');
+      overlay.classList.add('overlay');
+      const overlayButton = document.createElement('div');
+      overlayButton.classList.add('overlayButton', 'playButton');
+      overlay.appendChild(overlayButton);
+      videoBox.appendChild(overlay);
+
+      const videoContainerSelector = document.querySelector('.videoContainer');
+      videoContainerSelector.addEventListener('click', this.playButton.bind(this));
     }
   }
 
@@ -251,7 +255,7 @@ class VideoPlayer {
 document.addEventListener('DOMContentLoaded', () => {
   const URL = document.URL.toString();
   console.log(URL);
-  if (URL.indexOf('localhost:3000/') !== -1) {
+  if (URL.indexOf('player') !== -1) {
     const videoplayer = new VideoPlayer();
     videoplayer.load();
   } else {
