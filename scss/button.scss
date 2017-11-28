@@ -1,0 +1,42 @@
+.button {
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  margin: 10px;
+  border: transparent;
+
+  &__backButton {
+  display: inline-block;
+  background: url("./img/back.svg") no-repeat top left;
+  background-size: contain; }
+
+  &__playButton {
+  display: inline-block;
+  background: url("./img/play.svg") no-repeat top left;
+  background-size: contain; }
+
+  &__pauseButton {
+  display: inline-block;
+  background: url("./img/pause.svg") no-repeat top left;
+  background-size: contain; }
+
+  &__muteButton {
+  display: inline-block;
+  background: url("./img/mute.svg") no-repeat top left;
+  background-size: contain; }
+
+  &__unmuteButton {
+  display: inline-block;
+  background: url("./img/unmute.svg") no-repeat top left;
+  background-size: contain; }
+
+  &__fullscrButton {
+  display: inline-block;
+  background: url("./img/fullscreen.svg") no-repeat top left;
+  background-size: contain; }
+
+  &__nextButton {
+  display: inline-block;
+  background: url("./img/next.svg") no-repeat top left;
+  background-size: contain; }
+}
