@@ -319,7 +319,16 @@ class VideoPlayer {
   }
 
   fullscrButton() {
-
+    const vid = document.querySelector('.video');
+    if (vid.requestFullscreen) {
+      vid.requestFullscreen();
+    } else if (vid.mozRequestFullScreen) {
+      vid.mozRequestFullScreen();
+    } else if (vid.webkitRequestFullscreen) {
+      vid.webkitRequestFullscreen();
+    } else if (vid.msRequestFullscreen) {
+      vid.msRequestFullscreen();
+    }
   }
 
   muteButton() {
