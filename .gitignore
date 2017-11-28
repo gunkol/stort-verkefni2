@@ -2,3 +2,4 @@ node_modules/
 extras/
 package-lock.json
 script-compiled.js.map
+*.zip
