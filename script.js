@@ -21,7 +21,6 @@ class VideoPage {
   }
 
   createCategories() {
-    debugger;
     console.log(this);
 
     // this.clear();
@@ -208,9 +207,8 @@ class VideoPlayer {
   createPlayer() {
     const videoId = window.location.search;
     const id = videoId[videoId.length - 1];
-    this.player = document.querySelector('.player');
 
-    if (!this.data.videos[id]) {
+    if (!this.data.videos[id - 1]) {
       this.error();
     } else {
       const titleEl = document.querySelector('title');
@@ -237,11 +235,57 @@ class VideoPlayer {
       const overlayButton = document.createElement('div');
       overlayButton.classList.add('overlayButton', 'playButton');
       overlay.appendChild(overlayButton);
-      videoBox.appendChild(overlay);
+      videoContainer.appendChild(overlay);
 
       const videoContainerSelector = document.querySelector('.videoContainer');
       videoContainerSelector.addEventListener('click', this.playButton.bind(this));
+
+      this.buttons = document.createElement('div');
+      this.buttons.classList.add('buttons');
+      this.player.appendChild(this.buttons);
+
+      const tilbaka = document.createElement('a');
+      tilbaka.classList.add('text', 'text__heim');
+      tilbaka.setAttribute('href', './.');
+      tilbaka.appendChild(document.createTextNode('Til baka á forsíðu'));
+      this.player.appendChild(tilbaka);
+
+      video.addEventListener('ended', this.resetVideo.bind(this));
+
+      const buttons = ['backButton', 'playButton', 'muteButton', 'fullscrButton', 'nextButton'];
+
+      buttons.forEach((i) => {
+        this.createButton(i);
+      });
     }
+  }
+
+  createButton(buttonTitle) {
+
+  }
+
+  playButton() {
+
+  }
+
+  backButton() {
+
+  }
+
+  nextButton() {
+
+  }
+
+  fullscrButton() {
+
+  }
+
+  muteButton() {
+
+  }
+
+  resetVideo() {
+
   }
 
   error() {
