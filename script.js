@@ -290,21 +290,17 @@ class VideoPlayer {
     if (!vid.paused) {
       const button = document.querySelector('.pauseButton');
       vid.pause();
-      if (button.classList.contains('pauseButton')) {
-        button.classList.remove('pauseButton');
-        button.classList.add('playButton');
-        overlay.classList.remove('overlay__hidden');
-        overlayButton.add('playButton');
-      }
+      button.classList.remove('pauseButton');
+      button.classList.add('playButton');
+      overlay.classList.remove('overlay__hidden');
+      overlayButton.add('playButton');
     } else {
       const button = document.querySelector('button.playButton');
       vid.play();
-      if (button.classList.contains('playButton')) {
-        button.classList.remove('playButton');
-        button.classList.add('pauseButton');
-        overlayButton.classList.remove('playButton');
-        overlay.classList.add('overlay__hidden');
-      }
+      button.classList.remove('playButton');
+      button.classList.add('pauseButton');
+      overlayButton.classList.remove('playButton');
+      overlay.classList.add('overlay__hidden');
     }
   }
 
@@ -332,7 +328,18 @@ class VideoPlayer {
   }
 
   muteButton() {
-
+    const vid = document.querySelector('.video');
+    if (!vid.muted) {
+      const button = document.querySelector('.muteButton');
+      vid.muted = true;
+      button.classList.remove('muteButton');
+      button.classList.add('unmuteButton');
+    } else {
+      const button = document.querySelector('.unmuteButton');
+      vid.muted = false;
+      button.classList.remove('unmuteButton');
+      button.classList.add('muteButton');
+    }
   }
 
   resetVideo() {
